@@ -7,7 +7,9 @@ job("docker-nginx-build") {
   }
   steps {
     def cmd = '''#!/bin/bash +x
-    ls
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+    docker ps
     '''.stripIndent()
 
     shell(cmd)
