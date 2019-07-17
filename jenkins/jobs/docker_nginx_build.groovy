@@ -9,7 +9,6 @@ job("docker-nginx-build") {
       git {
           remote {
               github("https://github.com/AndreyPetkoTF/devops-course-itea", 'ssh')
-              credentials(credentialsToUse)
               branch("master")
           }
       }
