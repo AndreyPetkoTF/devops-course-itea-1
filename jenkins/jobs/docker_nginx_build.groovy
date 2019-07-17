@@ -8,7 +8,7 @@ job("docker-nginx-build") {
   scm {
       git {
           remote {
-              github("https://github.com/AndreyPetkoTF/devops-course-itea", 'https')
+              github("AndreyPetkoTF/devops-course-itea", 'https')
               branch("master")
           }
       }
