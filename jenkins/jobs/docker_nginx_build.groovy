@@ -5,9 +5,17 @@ job("docker-nginx-build") {
   logRotator {
       numToKeep(1)
   }
+  scm {
+      git {
+          remote {
+              github("https://github.com/AndreyPetkoTF/devops-course-itea", 'ssh')
+              credentials(credentialsToUse)
+              branch("master")
+          }
+      }
+  }
   steps {
     def cmd = '''#!/bin/bash +x
-    git clone https://github.com/AndreyPetkoTF/devops-course-itea
     cd devops-course-itea/nginx
     docker build -t my-nginx .
     docker login -u andreypetko -p 1qazse4
