@@ -22,7 +22,7 @@ job("docker-nginx-build") {
     def parameters = build?.actions.find{ it instanceof ParametersAction }?.parameters
     cd devops-course-itea/nginx
     docker build -t my-nginx .
-    docker login -u DOCKER_LOGIN -p DOCKER_PASSWORD
+    docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
     docker tag my-nginx andreypetko/my-nginx
     docker push andreypetko/my-nginx
     '''.stripIndent()
