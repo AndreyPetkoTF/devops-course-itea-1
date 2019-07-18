@@ -13,11 +13,16 @@ job("docker-nginx-build") {
           }
       }
   }
+  parameters {
+        stringParam('DOCKER_LOGIN', '', 'Docker login')
+        stringParam('DOCKER_PASSWORD', '', 'Docker password')
+  }
   steps {
     def cmd = '''#!/bin/bash +x
+    def parameters = build?.actions.find{ it instanceof ParametersAction }?.parameters
     cd devops-course-itea/nginx
     docker build -t my-nginx .
-    docker login -u andreypetko -p 1qazse4
+    docker login -u DOCKER_LOGIN -p DOCKER_PASSWORD
     docker tag my-nginx andreypetko/my-nginx
     docker push andreypetko/my-nginx
     '''.stripIndent()
